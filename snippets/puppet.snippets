@@ -118,6 +118,19 @@ snippet md5
 snippet notice
 	notice("${1:string}")
 
+snippet pack
+	package {
+		"${1:string}":
+			ensure => ${2:string},
+	}	
+
+snippet packreq
+	package {
+		"${1:string}":
+			ensure  => ${2:string},
+			require => ${3:string},
+	}	
+
 snippet realize
 	realize(${1:string})
 
