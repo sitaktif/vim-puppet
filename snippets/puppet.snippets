@@ -1,9 +1,29 @@
 snippet cl
+	# Class:: $1
+	#
+	# Parameters:
+	#
+	# Actions:
+	#
+	# Requires:
+	#
+	# Sample Usage:
+	#
 	class ${1:classname} {
 		${2:# code}
 	}
 
 snippet clin
+	# Class:: $1 inherits $2
+	#
+	# Parameters:
+	#
+	# Actions:
+	#
+	# Requires:
+	#
+	# Sample Usage:
+	#
 	class ${1:classname} inherits ${2:classname} {
 		${3:# code}
 	}
@@ -128,7 +148,7 @@ snippet packreq
 	package {
 		"${1:string}":
 			ensure  => ${2:latest},
-			require => ${3:string},
+			require => ${3:ResourceType}["${4:resource}"],
 	}	
 
 snippet realize
@@ -142,6 +162,51 @@ snippet require
 
 snippet search
 	search(${1:namespace})
+
+snippet serv
+	service {
+		"${1:servicename}":
+			enable		 => true,
+			hasrestart => true,
+			hasstatus  => true,
+			require    => ${2:ResourceType}["${3:resource}"],
+	}
+
+snippet servp
+	# Class:: $1
+	#
+	# Parameters:
+	#
+	# Actions:
+	#
+	# Requires:
+	#
+	# Sample Usage:
+	#
+	class ${1:classname} {
+		service {
+			"${2:servicename}":
+				enable		 => true,
+				hasrestart => true,
+				hasstatus  => true,
+				require    => ${3:ResourceType}["${4:resource}"],
+		}
+	}
+	# Class:: $1
+	
+	# Class:: $1::enable inherits $1
+	#
+	class $1::enable inherits $1 {
+		Service["$2"] { ensure => running, enable => true }
+	}
+	# Class:: $1::enable
+
+	# Class:: $1::disable inherits $1
+	#
+	class $1::disable inherits $1 {
+		Service["$2"] { ensure => stopped, enable => false }
+	}
+	# Class:: $1::disable
 
 snippet sha1
 	sha1(${1:string})
