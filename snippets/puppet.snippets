@@ -121,13 +121,13 @@ snippet notice
 snippet pack
 	package {
 		"${1:string}":
-			ensure => ${2:string},
+			ensure => ${2:latest},
 	}	
 
 snippet packreq
 	package {
 		"${1:string}":
-			ensure  => ${2:string},
+			ensure  => ${2:latest},
 			require => ${3:string},
 	}	
 
