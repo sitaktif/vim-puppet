@@ -234,3 +234,12 @@ snippet versioncmp
 
 snippet warn
 	warning("${1:string}")
+
+snippet exec
+	exec {
+		"${1:command}":
+			cwd     => "${2:directory}",
+			creates => "${3:file}",
+			path    => ["/usr/bin", "/usr/sbin", "/usr/local/bin", "${4:path}"],
+			timeout => ${5:seconds},
+	}
