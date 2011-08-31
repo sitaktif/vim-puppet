@@ -117,6 +117,20 @@ snippet fail
 snippet file
 	file("${1:path}")
 
+snippet rfile
+	file {
+		"${1:filename}":
+			ensure => ${2:file|directory},
+			source => "puppet:///${3:filesource}",
+	}
+
+snippet rfilet
+	file {
+		"${1:filename}":
+			ensure  => ${2:file|directory},
+			content => template("${3:modulename}/${4:erbfile}"),
+	}
+
 snippet fqdn
 	fqdn_rand(${1:range})
 
