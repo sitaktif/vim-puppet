@@ -44,12 +44,12 @@ snippet def
 	}
 
 snippet node
-	node "${1:name}" {
+	node '${1:name}' {
 		${2:# code}
 	}
 
 snippet nodein
-	node "${1:name}" inherits "${2:name}" {
+	node '${1:name}' inherits '${2:name}' {
 		${3:# code}
 	}
 
@@ -57,12 +57,12 @@ snippet nodein
 # CONDITIONALS
 
 snippet if
-	if $${1:variable} ${2:==} ${3:"value"} {
+	if $${1:variable} ${2:==} ${3:'value'} {
 		${4:# code}
 	}
 
 snippet ifelse
-	if $${1:variable} ${2:==} ${3:"value"} {
+	if $${1:variable} ${2:==} ${3:'value'} {
 		${4:# code}
 	}
 		${5:# code}
@@ -101,85 +101,85 @@ snippet case
 # BUILT IN FUNCTIONS
 
 snippet alert
-	alert("${1:string}")
+	alert('${1:string}')
 
 snippet crit
-	crit("${1:string}")
+	crit('${1:string}')
 
 snippet debug
-	debug("${1:string}")
+	debug('${1:string}')
 
 snippet defined
 	defined(${1:resource})
 
 snippet emerg
-	emerg("${1:string}")
+	emerg('${1:string}')
 
 snippet err
-	err("${1:string}")
+	err('${1:string}')
 
 snippet extlookup
-	extlookup("${1:key}", "${2:default value}")
+	extlookup('${1:key}', '${2:default value}')
 
 snippet fail
-	fail("${1:string}")
+	fail('${1:string}')
 
 snippet file
-	file("${1:path}")
+	file('${1:path}')
 
 snippet rfile
 	file {
-		"${1:filename}":
+		'${1:filename}':
 			ensure => ${2:file|directory},
-			source => "puppet:///${3:filesource}",
+			source => 'puppet:///${3:filesource}',
 	}
 
 snippet rfilet
 	file {
-		"${1:filename}":
+		'${1:filename}':
 			ensure  => ${2:file|directory},
-			content => template("${3:modulename}/${4:erbfile}"),
+			content => template('${3:modulename}/${4:erbfile}'),
 	}
 
 snippet fqdn
 	fqdn_rand(${1:range})
 
 snippet generate
-	generate("${1:command}")
+	generate('${1:command}')
 
 snippet inc
 	include ${1:classname}
 
 snippet info
-	info("${1:string}")
+	info('${1:string}')
 
 snippet inline
-	inline_template("${1:string}")
+	inline_template('${1:string}')
 
 snippet md5
-	md5("${1:string}")
+	md5('${1:string}')
 
 snippet notice
-	notice("${1:string}")
+	notice('${1:string}')
 
 snippet pack
 	package {
-		"${1:string}":
+		'${1:string}':
 			ensure => ${2:latest},
 	}	
 
 snippet packreq
 	package {
-		"${1:string}":
+		'${1:string}':
 			ensure  => ${2:latest},
-			require => ${3:ResourceType}["${4:resource}"],
+			require => ${3:ResourceType}['${4:resource}'],
 	}	
 
 snippet realize
 	realize(${1:string})
 
 snippet regsubst
-	regsubst($${1:target}, /${2:regexp}/, "${3:replacement}")
+	regsubst($${1:target}, /${2:regexp}/, '${3:replacement}')
 
 snippet require
 	require ${1:classname}
@@ -189,11 +189,11 @@ snippet search
 
 snippet serv
 	service {
-		"${1:servicename}":
+		'${1:servicename}':
 			enable		 => true,
 			hasrestart => true,
 			hasstatus  => true,
-			require    => ${2:ResourceType}["${3:resource}"],
+			require    => ${2:ResourceType}['${3:resource}'],
 	}
 
 snippet servp
@@ -209,11 +209,11 @@ snippet servp
 	#
 	class ${1:classname} {
 		service {
-			"${2:servicename}":
+			'${2:servicename}':
 				enable		 => true,
 				hasrestart => true,
 				hasstatus  => true,
-				require    => ${3:ResourceType}["${4:resource}"],
+				require    => ${3:ResourceType}['${4:resource}'],
 		}
 	}
 	# Class:: $1
@@ -221,14 +221,14 @@ snippet servp
 	# Class:: $1::enable inherits $1
 	#
 	class $1::enable inherits $1 {
-		Service["$2"] { ensure => running, enable => true }
+		Service['$2'] { ensure => running, enable => true }
 	}
 	# Class:: $1::enable
 
 	# Class:: $1::disable inherits $1
 	#
 	class $1::disable inherits $1 {
-		Service["$2"] { ensure => stopped, enable => false }
+		Service['$2'] { ensure => stopped, enable => false }
 	}
 	# Class:: $1::disable
 
@@ -239,31 +239,31 @@ snippet quote
 	shellquote(${1:args})
 
 snippet split
-	split($${1:string}, "${2:regexp}")
+	split($${1:string}, '${2:regexp}')
 
 snippet sprintf
-	sprintf("${1:string}", ${2:args})
+	sprintf('${1:string}', ${2:args})
 
 snippet tag
-	tag("${1:string}")
+	tag('${1:string}')
 
 snippet tagged
-	tagged("${1:string}")
+	tagged('${1:string}')
 
 snippet template
-	template("${1:path}")
+	template('${1:path}')
 
 snippet versioncmp
-	versioncmp("${1:a}", "${2:b}")
+	versioncmp('${1:a}', '${2:b}')
 
 snippet warn
-	warning("${1:string}")
+	warning('${1:string}')
 
 snippet exec
 	exec {
-		"${1:command}":
-			cwd     => "${2:directory}",
-			creates => "${3:file}",
-			path    => ["/usr/bin", "/usr/sbin", "/usr/local/bin", "${4:path}"],
+		'${1:command}':
+			cwd     => '${2:directory}',
+			creates => '${3:file}',
+			path    => ['/usr/bin', '/usr/sbin', '/usr/local/bin', '${4:path}'],
 			timeout => ${5:seconds},
 	}
