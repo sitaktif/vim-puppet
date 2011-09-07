@@ -141,6 +141,15 @@ snippet rfilet
 			content => template('${3:modulename}/${4:erbfile}'),
 	}
 
+snippet subdir
+	file {
+		[
+			'${1:path}',
+			'${2:path}'
+		]:
+			ensure => directory,
+	}
+
 snippet fqdn
 	fqdn_rand(${1:range})
 
